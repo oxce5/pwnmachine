@@ -4,6 +4,8 @@ COPY rei.jpeg /usr/share/backgrounds/kali-16x9/default
 RUN chown kali:kali /usr/share/backgrounds/kali-16x9/default
 
 RUN apt-get update && apt-get install -y \
+	kali-linux-default \
+	kali-linux-headless  \
 	fonts-jetbrains-mono \
 	alacritty \
 	pipx \
