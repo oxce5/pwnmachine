@@ -1,0 +1,39 @@
+services:
+  rei:
+    container_name: rei
+    image: rei:latest
+    hostname: "machina-mori"
+    restart: always
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    ports:
+      - 13389:3389
+
+    volumes:
+      # Persist workspace and tools data
+      - ./resources/bin:/opt/bin:z
+      - ./resources/lists:/opt/lists:z
+      - ./resources/tools:/opt/tools:z
+      - ./resources/linux:/opt/resources/linux:z
+
+      - ./workspace:/workspace:z
+      # DMS colors
+      - /home/oxce5/.cache/DankMaterialShell/dms-colors.json:/home/kali/.cache/DankMaterialShell/dms-colors.json:z,ro
+      - /home/oxce5/.config/DankMaterialShell/settings.json:/home/kali/.config/DankMaterialShell/settings.json:z,ro
+
+      # Persist C2 data
+      - ./home/sliver/server:/root/.sliver:z
+      - ./home/sliver/client:/home/kali/.sliver-client:z
+      # Save bash history
+      - ./home/bash_history:/home/kali/.bash_history:z
+
+    networks:
+      - ctflab
+
+    sysctls:
+      - net.ipv4.conf.all.forwarding=1
+
+networks:
+  ctflab:
+    driver: bridge
