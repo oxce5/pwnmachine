@@ -10,6 +10,9 @@ services:
     ports:
       - 13389:3389
 
+    devices:
+      - /dev/net/tun
+
     volumes:
       # Persist workspace and tools data
       - ./resources/bin:/opt/bin:z
