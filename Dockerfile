@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 	kali-linux-headless  \
 	alacritty \
 	pipx \
-	nxc \
+	netexec \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN echo 'export PATH="/opt/bin:$PATH"' > /etc/profile.d/optbin.sh && \
