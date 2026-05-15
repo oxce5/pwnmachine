@@ -4,6 +4,12 @@ services:
     image: rei:latest
     hostname: "machina-mori"
     restart: always
+
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+
     cap_add:
       - NET_ADMIN
       - NET_RAW
@@ -33,10 +39,20 @@ services:
 
     networks:
       - ctflab
+      # - qemunet
 
     sysctls:
       - net.ipv4.conf.all.forwarding=1
 
 networks:
   ctflab:
-    driver: bridge
+    external: true
+    # driver: bridge
+  # qemunet:
+  #   driver: macvlan
+  #   driver_opts:
+  #     parent: virbr0
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.122.0/24
+  #         gateway: 192.168.122.1

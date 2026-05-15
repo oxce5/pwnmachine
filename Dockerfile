@@ -17,5 +17,5 @@ RUN echo 'export PATH="/opt/bin:$PATH"' > /etc/profile.d/optbin.sh && \
 
 COPY ./setup/files/alacritty.toml /etc/skel/.config/alacritty/alacritty.toml
 COPY ./setup/sliver_server.sh /etc/my_init.d/95_sliver_server.sh
-RUN chmod +x /etc/my_init.d/95_sliver_server.sh
+RUN chmod +x /etc/my_init.d/95_sliver_server.sh 
 
