@@ -1,7 +1,7 @@
 services:
   rei:
     container_name: rei
-    image: rei:latest
+    image: ghcr.io/oxce5/pwnmachine:latest  
     hostname: "machina-mori"
     restart: always
 
