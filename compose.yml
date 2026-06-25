@@ -28,14 +28,15 @@ services:
 
       - ./workspace:/workspace:z
       # DMS colors
-      - /home/oxce5/.cache/DankMaterialShell/dms-colors.json:/home/kali/.cache/DankMaterialShell/dms-colors.json:z,ro
-      - /home/oxce5/.config/DankMaterialShell/settings.json:/home/kali/.config/DankMaterialShell/settings.json:z,ro
+      # - /home/oxce5/.cache/DankMaterialShell/dms-colors.json:/home/kali/.cache/DankMaterialShell/dms-colors.json:z,rw
+      # - /home/oxce5/.config/DankMaterialShell/settings.json:/home/kali/.config/DankMaterialShell/settings.json:z,rw
 
       # Persist C2 data
       - ./home/sliver/server:/root/.sliver:z
       - ./home/sliver/client:/home/kali/.sliver-client:z
       # Save bash history
       - ./home/bash_history:/home/kali/.bash_history:z
+      - ./home/fonts:/home/kali/.local/share/fonts:z
 
     networks:
       - ctflab
